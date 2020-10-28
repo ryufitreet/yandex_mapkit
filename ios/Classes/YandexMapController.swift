@@ -231,7 +231,9 @@ public class YandexMapController: NSObject, FlutterPlatformView {
     placemark.userData = (params["hashCode"] as! NSNumber).intValue
     placemark.opacity = (params["opacity"] as! NSNumber).floatValue
     placemark.isDraggable = (params["isDraggable"] as! NSNumber).boolValue
-    placemark.direction = (params["direction"] as! NSNumber).floatValue
+    if let link = params["direction"] as! NSNumber {
+      placemark.direction = (params["direction"] as! NSNumber).floatValue
+    }
 
     if (iconName != nil) {
       placemark.setIconWith(UIImage(named: pluginRegistrar.lookupKey(forAsset: iconName!))!)
