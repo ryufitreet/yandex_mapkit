@@ -231,7 +231,7 @@ public class YandexMapController: NSObject, FlutterPlatformView {
     placemark.userData = (params["hashCode"] as! NSNumber).intValue
     placemark.opacity = (params["opacity"] as! NSNumber).floatValue
     placemark.isDraggable = (params["isDraggable"] as! NSNumber).boolValue
-    if params["direction"] != nil {
+    if !(params["direction"] is NSNull) {
       placemark.direction = (params["direction"] as! NSNumber).floatValue
     }
 
