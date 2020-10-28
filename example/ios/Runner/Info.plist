@@ -22,6 +22,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app displays user location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This demo displays user location arrow</string>
 	<key>UILaunchStoryboardName</key>
