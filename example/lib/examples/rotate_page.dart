@@ -19,6 +19,7 @@ class _RotateExample extends StatefulWidget {
 class _RotateExampleState extends State<_RotateExample> {
 
   YandexMapController controller;
+  bool rotationBlocked = false;
 
   void _addPlacemarkPinned() {
     print('addPlacemark');
@@ -59,7 +60,8 @@ class _RotateExampleState extends State<_RotateExample> {
   }
 
   void _blockCameraRotate() {
-    controller.toggleMapRotation(enabled: false);
+    setState(() => rotationBlocked = !rotationBlocked);
+    controller.toggleMapRotation(enabled: !rotationBlocked);
   }
 
   @override
@@ -93,7 +95,7 @@ class _RotateExampleState extends State<_RotateExample> {
                   onPressed: _addPlacemarkNonPinned,
                 ),
                 RaisedButton(
-                  child: const Text('Block map rotation'),
+                  child: Text('Toggle camera rotation: ${rotationBlocked ? 'ON' : 'OFF'}'),
                   onPressed: _blockCameraRotate,
                 )
               ],

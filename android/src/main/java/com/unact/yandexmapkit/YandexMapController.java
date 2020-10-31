@@ -99,6 +99,13 @@ public class YandexMapController implements PlatformView, MethodChannel.MethodCa
   }
 
   @SuppressWarnings("unchecked")
+  private void toggleMapRotation(MethodCall call) {
+    Map<String, Object> params = ((Map<String, Object>) call.arguments);
+    mapView.getMap().setRotateGesturesEnabled((Boolean) params.get("enabled"));
+  }
+
+
+  @SuppressWarnings("unchecked")
   private void showUserLayer(MethodCall call) {
 
     if (!hasLocationPermission()) return;
@@ -413,6 +420,10 @@ public class YandexMapController implements PlatformView, MethodChannel.MethodCa
     switch (call.method) {
       case "toggleNightMode":
         toggleNightMode(call);
+        result.success(null);
+        break;
+      case "toggleMapRotation":
+        toggleMapRotation(call);
         result.success(null);
         break;
       case "showUserLayer":
