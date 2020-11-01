@@ -22,7 +22,6 @@ class _RotateExampleState extends State<_RotateExample> {
   bool rotationBlocked = false;
 
   void _addPlacemarkPinned() {
-    print('addPlacemark');
     const Point point = Point(latitude: 59.945933, longitude: 30.320045);
     final Placemark placemark = Placemark(
       point: point,
@@ -30,31 +29,6 @@ class _RotateExampleState extends State<_RotateExample> {
       iconName: 'lib/assets/place.png',
       onTap: (Point point) => print('Tapped me at ${point.latitude},${point.longitude}'),
       rotationType: 'rotate',
-    );
-    controller.addPlacemark(placemark);
-  }
-
-  void _addPlacemarkNonPinned() {
-    print('addPlacemark');
-    const Point point = Point(latitude: 59.945933, longitude: 30.320045);
-    final Placemark placemark = Placemark(
-      point: point,
-      opacity: 0.7,
-      iconName: 'lib/assets/place.png',
-      onTap: (Point point) => print('Tapped me at ${point.latitude},${point.longitude}'),
-    );
-    controller.addPlacemark(placemark);
-  }
-
-  void _addPlacemarkWithDirection() {
-    const Point point = Point(latitude: 59.945933, longitude: 32.320045);
-    final Placemark placemark = Placemark(
-      point: point,
-      opacity: 0.7,
-      iconName: 'lib/assets/place.png',
-      onTap: (Point point) => print('Tapped me at ${point.latitude},${point.longitude}'),
-      direction: 90,
-      rotationType: 'rotate'
     );
     controller.addPlacemark(placemark);
   }
@@ -83,16 +57,8 @@ class _RotateExampleState extends State<_RotateExample> {
             child: Column(
               children: <Widget>[
                 RaisedButton(
-                  child: const Text('Add placemark with direction'),
-                  onPressed: _addPlacemarkWithDirection,
-                ),
-                RaisedButton(
-                  child: const Text('Add rotated with map placemark'),
+                  child: const Text('Add placemark with pinned direction'),
                   onPressed: _addPlacemarkPinned,
-                ),
-                RaisedButton(
-                  child: const Text('Add placemark'),
-                  onPressed: _addPlacemarkNonPinned,
                 ),
                 RaisedButton(
                   child: Text('Toggle camera rotation: ${rotationBlocked ? 'ON' : 'OFF'}'),
